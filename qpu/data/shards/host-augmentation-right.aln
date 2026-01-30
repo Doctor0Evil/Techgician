@@ -1,0 +1,58 @@
+version 1.0
+schema biospectre.host.augmentation-right
+
+host-id        bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7
+profile-id     augmentation-right.v1
+
+tokens:
+  host-bound          true          # No cross-host transfer of any biophysical token
+  financial-interfaces:
+    defi-bridge       false         # No DeFi / staking / NFT surface
+    stake-weighted    false         # No stake-voting over biophysical state
+    marketplace       false         # No sale / lease of augment capacity
+
+consent:
+  required-for:
+    augmentation-blueprint   true   # Every augmentation design anchored in consent
+    state-mutation           true   # Any BRAIN/WAVE/SMART/etc. change
+  proof-type         "ALN-DID-ZK"
+  revocation-model   "host-revocable"  # Host can revoke; vendors cannot override
+  no-commercial-reuse true
+  no-military-reuse   true
+
+access-control:
+  allowed-roles:
+    - augmented-citizen
+    - ethical-operator
+    - system-daemon
+  denied-roles:
+    - vendor-generic
+    - sandbox
+    - pure-machine
+  ai-platforms:
+    may-propose        true
+    may-execute        false       # Execution must be inner-ledger under host DID
+
+inner-vs-outer:
+  inner-ledger-isolation   true
+  outer-chain-attestations:
+    leak-balances          false
+    leak-raw-telemetry     false
+    allowed-types:
+      - "safety-calibration-complete"
+      - "lifeforce-bands-within-safe-range"
+
+governance:
+  control-model      "role-and-rights"
+  capital-influence  "none"
+  change-process:
+    requires-host-consent    true
+    requires-ethical-review  true
+    may-touch-souls          false
+    may-touch-consciousness  false
+
+neurorights:
+  soul-immutable          true
+  consciousness-immutable true
+  no-expropriation        true  # No third party may burn/freeze to benefit another
+  no-downgrade-by-third   true  # No vendor/regulator key may reduce rights if safe

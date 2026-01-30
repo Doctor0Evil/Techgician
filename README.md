@@ -1,2 +1,1 @@
-# Biosphere
-Biosphere is a sovereign, biophysically-anchored quantum-learning circuit for AI-Chats to create real, and deployable NeuroPC/Organic_CPU programming for biophysical-augmentation, supporting augmented, and transhuman-evolution rights, and citizen-sovereignty regardless of region, beliefs, or citizenship-status under any policy.
+Techgician is a biophysically-authored quantum-learning circuit for technical-support for any coding, and programmatical-issue, on any machine, for any device, and on any platform, specializing in AI-Chats, Image-Generation, and "quantumthink" for llms, and AI-Systems.

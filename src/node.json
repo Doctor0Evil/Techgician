@@ -1,0 +1,28 @@
+{
+  "env": "phx-host-01",
+  "window_id": "bd-000123",
+  "time": { "start_utc": "2026-01-29T11:12:30Z", "duration_ms": 500 },
+  "channels": [ ... ],
+  "state": {
+    "posture_class": "neutral",
+    "intent_class": "NO_INTENT",
+    "decoder_scores": {
+      "APPROVE_LOW": 0.01,
+      "APPROVE_HIGH": 0.00,
+      "CANCEL": 0.02,
+      "NO_INTENT": 0.97
+    },
+    "host_fatigue": 0.3
+  },
+  "energy": {
+    "motion_intensity": 0.12,
+    "signal_variance": 0.08
+  },
+  "context": {
+    "plane": "bci-hci-eeg",
+    "comfort_corridor_state": "SAFE",
+    "signing_risk_band": "NONE",
+    "safety_decision": "Allow",
+    "lifeforce_ok": true
+  }
+}

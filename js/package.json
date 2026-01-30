@@ -1,0 +1,14 @@
+{
+  "name": "techgician-js",
+  "version": "0.1.0",
+  "description": "JS validators and tools for Techgician ALN/DID/Bostrom stamps.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node src/index.js"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://techgician.org/schema/aln_did_bostrom_stamp_v1.json",
+  "title": "ALN_DID_Bostrom_Stamp_v1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "author_system": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "primary_bostrom_addr": {
+      "type": "string",
+      "pattern": "^bostrom[0-9a-z]{39,64}$"
+    },
+    "alt_bostrom_addr": {
+      "type": "string",
+      "pattern": "^bostrom[0-9a-z]{39,64}$"
+    },
+    "safe_addrs": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 16,
+      "items": {
+        "type": "string",
+        "minLength": 8,
+        "maxLength": 128
+      }
+    },
+    "response_hash_hex": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "T_score_0_to_1": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "P_score_0_to_1": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "R_score_0_to_1": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "C_score_0_to_1": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0
+    },
+    "timestamp_utc_iso8601": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "notes": {
+      "type": "string",
+      "maxLength": 1024
+    }
+  },
+  "required": [
+    "author_system",
+    "primary_bostrom_addr",
+    "safe_addrs",
+    "response_hash_hex",
+    "T_score_0_to_1",
+    "P_score_0_to_1",
+    "R_score_0_to_1",
+    "C_score_0_to_1",
+    "timestamp_utc_iso8601"
+  ]
+}

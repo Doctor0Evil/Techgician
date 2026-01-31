@@ -1,0 +1,18 @@
+version: 1
+default_orgs:
+  - Doctor0Evil
+  - Techgician
+
+context_orgs:
+  airglobe_wbgt:
+    - Doctor0Evil
+    - Techgician
+    # future: add vetted climate-/heat-focused orgs here
+
+  soil_carbon:
+    - Doctor0Evil
+    - Techgician
+
+  generic_econet:
+    - Doctor0Evil
+    - Techgician

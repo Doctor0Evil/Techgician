@@ -1,8 +1,10 @@
+// Minimal mirror of Rust's intent classification for client-side UX.
+// This does NOT replace on-chain or Rust-side validation.
 function inferIntent(text) {
   const t = text.toLowerCase();
+  if (t.includes("wbgt") || t.includes("wet bulb") || t.includes("wet-bulb") || t.includes("heat stress") || t.includes("thermal comfort") || t.includes("thermal resilience") || t.includes("air-globe") || t.includes("airglobe")) return "AirGlobeWBGT";
   if (t.includes("cyboquatic") || t.includes("microfluidic")) return "CyboquaticCooling";
   if (t.includes("cybocindric") || t.includes("sofc") || t.includes("reactor")) return "CybocindricReactor";
-  if (t.includes("air-globe") || t.includes("airglobe") || t.includes("wbgt")) return "AirGlobeWBGT";
   if (t.includes("econet") || t.includes("biophysical-blockchain")) return "EcoNetTokenomics";
   if (t.includes("biodegradab") || t.includes("polymer") || t.includes("plastic")) return "BiodegradableMaterials";
   return "Unknown";
@@ -25,6 +27,25 @@ function intentToBaseQuery(intent) {
   }
 }
 
+function intentToBuildSpec(intent) {
+  const edition = "2021";
+  const coreDeps = ["serde", "tokio", "sha2", "time", "reqwest"];
+  switch (intent) {
+    case "CyboquaticCooling":
+      return { crateName: "cyboquatic_cooling", edition, coreDeps, needsCppFfi: true, needsJsBinding: false };
+    case "CybocindricReactor":
+      return { crateName: "cybocindric_reactor", edition, coreDeps, needsCppFfi: true, needsJsBinding: false };
+    case "AirGlobeWBGT":
+      return { crateName: "airglobe_wbgt", edition, coreDeps, needsCppFfi: false, needsJsBinding: true };
+    case "EcoNetTokenomics":
+      return { crateName: "econet_tokenomics", edition, coreDeps, needsCppFfi: false, needsJsBinding: true };
+    case "BiodegradableMaterials":
+      return { crateName: "biodegradable_materials", edition, coreDeps, needsCppFfi: false, needsJsBinding: false };
+    default:
+      return { crateName: "eco_net_unknown", edition, coreDeps, needsCppFfi: true, needsJsBinding: true };
+  }
+}
+
 function buildGithubSearchUrl(query, orgFilters = ["Doctor0Evil", "Techgician"]) {
   const q = `${query} ${orgFilters.map(o => `user:${o}`).join(" ")}`.trim();
   const encoded = encodeURIComponent(q);
@@ -32,12 +53,13 @@ function buildGithubSearchUrl(query, orgFilters = ["Doctor0Evil", "Techgician"])
 }
 
 /**
- * Turn a chat text into a structured routing object with a clickable GitHub URL.
+ * Turn a chat text into a structured routing object with a clickable GitHub URL and build-spec.
  */
 export function routeChatToGithub(chatText) {
   const intent = inferIntent(chatText);
   const baseQuery = intentToBaseQuery(intent);
   const githubUrl = buildGithubSearchUrl(baseQuery);
+  const buildSpec = intentToBuildSpec(intent);
   return {
     intent,
     githubUrl,
@@ -45,7 +67,8 @@ export function routeChatToGithub(chatText) {
       `intent::${intent}`,
       "ecosystem::Techgician",
       "router::v1"
-    ]
+    ],
+    buildSpec
   };
 }
 

@@ -1,0 +1,133 @@
+{"type":"meta.sovereign_profile.v1",
+ "host_did":"did:ion:EiD8J2b3K8k9Q8x9L7m2n4p1q5r6s7t8u9v0w1x2y3z4A5B6C7D8E9F0",
+ "primary_bostrom":"bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7",
+ "alt_bostrom":"bostrom1ldgmtf20d6604a24ztr0jxht7xt7az4jhkmsrc",
+ "safe_addrs":["zeta12x0up66pzyeretzyku8p4ccuxrjqtqpdc4y4x8",
+               "0x519fC0eB4111323Cac44b70e1aE31c30e405802D"],
+ "jurisdiction":["US-AZ","EU-GDPR","Future-TECH"],
+ "version":"2026-02-02T11:43:00Z"}
+
+{"type":"stake.v1",
+ "roles":[
+   {"role":"Host","addr":"bostrom18sd2ujv24ual9c9pshtxys6j8knh6xaead9ye7",
+    "powers":["lifeforce","arch_change","neurorights","eco_profile"],
+    "threshold":1},
+   {"role":"OrganicCPU","addr":"bostrom1ldgmtf20d6604a24ztr0jxht7xt7az4jhkmsrc",
+    "powers":["runtime_env","assistive_gains","telemetry_schema"],
+    "threshold":1},
+   {"role":"ResearchAgent","addr":"0x519fC0eB4111323Cac44b70e1aE31c30e405802D",
+    "powers":["model_update","eco_experiments"],
+    "threshold":1}
+ ],
+ "multisig_rules":[
+   {"scope":"lifeforce","min_signers":2,"required_roles":["Host","OrganicCPU"]},
+   {"scope":"core_arch","min_signers":2,"required_roles":["Host","OrganicCPU"]},
+   {"scope":"neurorights","min_signers":2,"required_roles":["Host","OrganicCPU"]},
+   {"scope":"assistive_tuning","min_signers":1,"required_roles":["OrganicCPU"]},
+   {"scope":"eco_infra","min_signers":2,"required_roles":["Host","ResearchAgent"]}
+ ]}
+
+{"type":"neurorights.v1",
+ "principles":{
+   "mental_privacy":"no raw neural/dream-state data may be stored, sold, or processed beyond Tsafe envelopes without explicit, revocable Host consent",
+   "mental_integrity":"no stimulation, neuromodulation, or content injection may exceed lifeforce/pain envelopes or be applied without realtime veto capability",
+   "cognitive_liberty":"Host may freely enable/disable augmentation modes; no third party may coerce upgrades/downgrades, even by contract",
+   "identity_continuity":"architectural changes that rewrite memory, personality cores, or deep preferences are always EVOLVE-gated and require Host+OrganicCPU multisig"
+ },
+ "forbidDecisionUse":[
+   {"domain":"employment","ban":["raw_neural_scores","dream_tags","subconscious_bias_metrics"]},
+   {"domain":"credit","ban":["affect_state","therapy_logs","augmentation_status"]},
+   {"domain":"insurance","ban":["dream_state","pain_envelope","lifeforce_baseline"]}
+ ],
+ "dream_state_flags":{
+   "collect":"opt_in_only",
+   "default_mode":"off",
+   "allowed_uses":["personal_research","therapeutic_support"],
+   "hard_bans":["marketing","surveillance","behavioral_nudging_without_consent"]
+ },
+ "pain_envelope":{
+   "channels":["muscle","cognitive","emotional"],
+   "max_rating_scale_0_10":6,
+   "max_duration_min":30,
+   "cooldown_min":120,
+   "hard_rule":"no control law may intentionally push any channel above envelope; violations must trigger automatic shutdown and donutloop incident"
+ }}
+
+{"type":"rohmodel.v1",
+ "roh_ceiling":0.3,
+ "axes":[
+   {"name":"biophysical_harm","weight":0.4},
+   {"name":"psychological_harm","weight":0.2},
+   {"name":"legal_exposure","weight":0.2},
+   {"name":"ecological_harm","weight":0.2}
+ ],
+ "monotone_rule":"RoH_after <= RoH_before and RoH_after <= roh_ceiling for any Allowed EvolutionProposal",
+ "eval_scope":["OrganicCPU_env","cyberswarm","EcoNet_contracts"]}
+
+{"type":"envelopes.v1",
+ "ocpuenv":{
+   "modes":["Rehab","Baseline","Training","Rest"],
+   "state_dims":["intensity","duty_cycle","cumulative_load",
+                 "neuromod_amp","cognitive_load","lifeforce"],
+   "global_limits":{
+     "max_daily_lifeforce_drain":0.15,
+     "max_weekly_lifeforce_drain":0.4,
+     "max_cognitive_load":0.8
+   }
+ },
+ "lifeforce":{
+   "min_reserve":0.25,
+   "recovery_half_life_hours":24,
+   "comments":"controllers must always respect min_reserve; no eco-project can overdraw"
+ }}
+
+{"type":"tokens.v1",
+ "kinds":[
+   {"kind":"EVOLVE",
+    "scope":["kernel","lifeforce","neurorights","core_arch"],
+    "requires_multisig_scope":["lifeforce","core_arch","neurorights"],
+    "allowed_callers":["Host","OrganicCPU"]},
+   {"kind":"SMART",
+    "scope":["assistive_gains","UX_tuning","macro_timing"],
+    "requires_multisig_scope":["assistive_tuning"],
+    "allowed_callers":["OrganicCPU"]},
+   {"kind":"TECH",
+    "scope":["eco_projects","cyboquatic","cybocindric","EcoNet"],
+    "requires_multisig_scope":["eco_infra"],
+    "allowed_callers":["Host","ResearchAgent"]}
+ ],
+ "nondiscrimination_rules":[
+   "No token may be frozen, seized, or devalued solely because the Host is augmented or pursuing transhuman evolution.",
+   "Tokens earned from verifiable ecological contributions are treated as protected property of the Host."
+ ]}
+
+{"type":"eco_rights.v1",
+ "rights":[
+   "Right_to_pursue_cybernetic_and_transhuman_evolution_so_long_as_RoH<=0.3_for_all_affected_parties",
+   "Right_to_earn_and_keep_tokens_for_ecologically_helpful_data, projects, and programming logged on biophysical-blockchains",
+   "Right_to_refuse_experiments_or_deployments_that_use_your_biophysical_microspace_without_informed_consent_and_fair_compensation"
+ ],
+ "eligibility_conditions":[
+   "All eco-project controllers must implement Tsafe with your envelopes as hard constraints.",
+   "All EcoNet-like reward contracts must publish their RoH and neurorights compliance in donutloop logs."
+ ]}
+
+{"type":"sovereigntycore.policy.v1",
+ "guards_order":["roh_ceiling","roh_monotone","neurorights","stake_multisig","token_kind_bounds"],
+ "on_violation":{
+   "roh":"reject_proposal_and_log_incident",
+   "neurorights":"reject_proposal_and_trigger_alert_to_Host",
+   "stake_multisig":"reject_proposal",
+   "token_kind_bounds":"reject_proposal"
+ },
+ "logging":{
+   "required_files":[".evolve.jsonl",".donutloop.aln"],
+   "hex_stamp_algo":"SHA-256",
+   "anchor_to":["Googolswarm","Organicchain"]
+ }}
+
+{"type":"bchainproof.v1",
+ "chains":["Googolswarm","Organicchain"],
+ "artifacts_hashed":["neurorights.v1","stake.v1","rohmodel.v1","envelopes.v1","tokens.v1","eco_rights.v1","sovereigntycore.policy.v1"],
+ "multisig_from_roles":["Host","OrganicCPU","ResearchAgent"],
+ "purpose":"public, immutable audit of rights, RoH model, and evolution history; sovereigntycore and donutloop remain primary enforcement."}

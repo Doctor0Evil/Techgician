@@ -1,0 +1,15 @@
+[package]
+name = "sovereignty-core-cli"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "CLI for sovereignty-core: validate TECH artifacts and summarize donutloop."
+repository = "https://github.com/Doctor0Evil/Techgician"
+
+[dependencies]
+clap = { version = "4.5", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+rust_decimal = { version = "1.36", features = ["serde"] }
+sovereignty-core = { path = "../sovereignty-core" }
